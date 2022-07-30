@@ -139,7 +139,7 @@ body {
   font-family: "Saira Condensed", sans-serif;
 }
 
-.container-play .button-play:activ {
+.container-play .button-play:hover {
   transform: translateY(5px);
   background-color: rgb(63, 253, 63);
 }
