@@ -1,35 +1,16 @@
-var keyWord = document.querySelector(".demo");
-var keyWord_a = keyWord.textContent.trim();
-var keyWordArray = Array.from(keyWord_a);
-let index = 0;
-
-function showChara() {
-  while (index <= keyWordArray.length) {
-    index++;
-    if (index > keyWordArray.length) {
-      index = 0;
-      return index;
-    } else {
-      return index;
-    }
-  }
-}
-setInterval(() => {
-  // console.log()
-  keyWord.textContent = keyWord_a.slice(0, showChara());
-}, 200);
 // x o variabels
 var srick = document.querySelector(".srick"),
   all_i_ele = document.querySelectorAll("span"),
-  xmarkIcon = "<i class='fa-solid fa-xmark'></i>",
-  o_markIcon = "<i class='fa-solid fa-o'></i>",
+  xmarkIcon = '<i class="fa-solid fa-xmark"></i>',
+  o_markIcon = '<i class="fa-solid fa-o"></i>',
   changeIcons = xmarkIcon;
 var numberArray = new Array(all_i_ele.length);
 numberArray.fill(null);
 var play_button = document.getElementById("play");
 all_i_ele.forEach((ele) => ele.addEventListener("click", Add_when_pressing));
 play_button.addEventListener("click", playFun);
-
+var audio = new Audio("mouse_click.mp3");
+var winnerAudio = new Audio("winner.wav");
 function Add_when_pressing(event) {
   var eventElements = event.target,
     getClassElements = eventElements.className,
@@ -43,15 +24,18 @@ function Add_when_pressing(event) {
     selectElement.innerHTML = xmarkIcon;
     numberArray[index_Element - 1] = "x";
     changeIcons = o_markIcon;
+    audio.play();
   } else {
     selectElement.innerHTML = o_markIcon;
     numberArray[index_Element - 1] = "o";
     changeIcons = xmarkIcon;
+    audio.play();
   }
   var array_x_o = ["x", "o"];
   var winner;
   for (let index = 0; index < array_x_o.length; index++) {
     let ele = array_x_o[index];
+
     switch (event.type == "click") {
       // row
       case numberArray[0] === ele &&
@@ -116,19 +100,29 @@ function Add_when_pressing(event) {
         winner = ele;
         srick.classList.add("srick-diagonal-B");
         break;
+
       default:
         break;
     }
+
     if (srick.classList.length > 1) {
       all_i_ele.forEach(
         (allElements) => (allElements.style.pointerEvents = "none")
       );
-      document.querySelector("h2").className = "d-block";
-      document.querySelector("strong").innerText = winner;
+      document.querySelector(".h2").innerText = ": الرابح هو";
+      document.querySelector(".span").innerText = winner;
+      winnerAudio.play();
+    } else {
+      if (eventElements.innerHTML == xmarkIcon) {
+        document.querySelector(".h2").innerText = " : الدور عند";
+        document.querySelector(".span").innerText = "o";
+      } else {
+        document.querySelector(".h2").innerText = " : الدور عند";
+        document.querySelector(".span").innerText = "x";
+      }
     }
   }
 }
-
 function playFun() {
   all_i_ele.forEach((ele) => (ele.innerHTML = ""));
   srick.className = "srick";
@@ -136,5 +130,5 @@ function playFun() {
   all_i_ele.forEach(
     (allElements) => (allElements.style.pointerEvents = "auto")
   );
-  document.querySelector("h2").className = "d-none";
+
 }
