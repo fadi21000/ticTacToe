@@ -83,9 +83,9 @@ body {
 }
 .container-play {
   width: 100%;
+  height: min-content;
   max-width: 18rem;
   margin: auto;
-  height: 140px;
   text-align: center;
   overflow: hidden;
   border: 1px solid rgba(241, 241, 241, 0.309);
@@ -104,12 +104,54 @@ body {
   color: rgb(206, 8, 8);
   text-shadow: 2px 2px rgba(0, 0, 0, 0.128), -2px -2px rgba(0, 0, 0, 0.048);
 }
-
-.container-play .button-play {
+.container-play .play-with-buttons {
   display: block;
-  margin: auto;
+  margin: 5px auto;
+  width: 100px;
+  height: 45px;
+  font-size: 18px;
+  font-weight: 600;
+  background: #833ab4; /* fallback for old browsers */
+  background: -webkit-linear-gradient(
+    to right,
+    #fcb045,
+    #fd1d1d,
+    #833ab4
+  ); 
+  background: linear-gradient(
+    to right,
+    #fcb045,
+    #fd1d1d,
+    #833ab4
+  ); 
+  border-radius: 10px;
+  -webkit-box-shadow: -10px 0px 13px -7px #000000, 10px 0px 13px -7px #000000,
+    5px 5px 15px 5px rgba(0, 0, 0, 0);
+  box-shadow: -10px 0px 13px -7px #000000, 10px 0px 13px -7px #000000,
+    5px 5px 15px 5px rgba(0, 0, 0, 0);
+  cursor: pointer;
+  border: 0;
+  outline: none;
+  color: rgb(0, 0, 0);
+  transition: all 0.5s;
+  text-shadow: 2px 2px rgba(255, 255, 255, 0.258);
+}
+.container-play .play-with-buttons:hover{
+  filter: invert(1);
+}
+.container-play .message {
+  font-size: 18px;
+  font-weight: bold;
+  padding: 6px;
+  opacity: 0.6;
+}
+.container-play .button-play {
+  cursor: pointer;
+  display: block;
+  margin:20px auto;
   width: 200px;
   height: 55px;
+  
   font-size: 21px;
   font-weight: 600;
   background-color: greenyellow;
@@ -124,9 +166,19 @@ body {
 }
 
 .srick {
-  background: #12c2e9;  /* fallback for old browsers */
-  background: -webkit-linear-gradient(to top, #f64f59, #c471ed, #12c2e9);  /* Chrome 10-25, Safari 5.1-6 */
-  background: linear-gradient(to top, #f64f59, #c471ed, #12c2e9); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  background: #12c2e9; /* fallback for old browsers */
+  background: -webkit-linear-gradient(
+    to top,
+    #f64f59,
+    #c471ed,
+    #12c2e9
+  ); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(
+    to top,
+    #f64f59,
+    #c471ed,
+    #12c2e9
+  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
   border-radius: 50px;
   position: absolute;
   outline: none;
@@ -179,4 +231,7 @@ body {
   width: 5px;
   height: 100%;
   transform: skew(-45deg);
+}
+.d-none{
+  display: none;
 }

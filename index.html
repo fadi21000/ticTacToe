@@ -19,7 +19,6 @@
   </head>
 
   <body>
-
     <div class="container">
       <span data-index="1" class="child_1"></span>
       <span data-index="2" class="child_2"></span>
@@ -32,13 +31,23 @@
       <span data-index="9" class="child_9"></span>
       <hr class="srick" />
     </div>
+
     <div class="container-play">
-      <span class="span"></span>
-      <span class="h2"></span>
-      
-      
-      <button class="button-play" id="play">تشغيل اللعبة</button>
+      <div class="play-with-div">
+        <p class="message">الرجاء الاختيار مع من تريد أن تبدأ اللعبة</p>
+        <button class="play-with-buttons" id="pc-button">
+          <i class="fa-solid fa-desktop"></i>
+        </button>
+        <button class="play-with-buttons" id="person-button">
+          <i class="fa-solid fa-user-group"></i>
+        </button>
+      </div>
+      <div id="playGame" class="d-none">
+        <a class="span"> </a><a class="h2"></a
+        ><button class="button-play" id="play">تشغيل اللعبة</button>
+      </div>
     </div>
-    <script src="app.js"></script>
+    <script src="https://randojs.com/2.0.0.js"></script>
+    <script src="app.js"  ></script>
   </body>
 </html>
