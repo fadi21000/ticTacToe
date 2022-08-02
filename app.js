@@ -28,7 +28,6 @@ function personFun() {
   startGame.className="d-none"
   }
   
-  // تحتاج تكميل 
 function pcFun(){
   playGame.className="";
   startGame.className="d-none";
@@ -153,7 +152,7 @@ function pcFun(){
         
       }
     }
-}));// ele.addEventListener
+}));
 
 }
 
