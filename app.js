@@ -47,6 +47,7 @@ class Main {
     // restart the game
     this.play_button.addEventListener("click", this.playFun);
   }
+
   //this function Choose to start playing with a person or a pc
   handlePersonFun = () => {
     // Store and check values and display the result
