@@ -5,13 +5,14 @@ class Main {
     this.all_i_ele = document.querySelectorAll("span");
     this.x_icon = '<i class="fa-solid fa-xmark"></i>';
     this.o_icon = '<i class="fa-solid fa-o"></i>';
+    this.printWord=document.querySelector(".h2");
+    this.printPlayer=document.querySelector(".span");
     // for change between x and o
     this.changeIcons = this.x_icon;
     // empty array to store the values x and o inside
     this.numberArray = new Array(this.all_i_ele.length);
     // Fill the array with a null value
     this.numberArray.fill(null);
-    this.array_x_o = ["x", "o"];
     // Button to choose a second person to play
     this.personButton = document.querySelector("#person-button");
     // Play with computer button
@@ -36,7 +37,6 @@ class Main {
       { num: [2, 4, 6], streakClass: "streak-diagonal-B" },
     ];
     this.winner;
-    this.cont;
     // audio files
     this.audio = new Audio("mouse_click.mp3");
     this.winnerAudio = new Audio("winner.wav");
@@ -47,7 +47,6 @@ class Main {
     // restart the game
     this.play_button.addEventListener("click", this.playFun);
   }
-
   //this function Choose to start playing with a person or a pc
   handlePersonFun = () => {
     // Store and check values and display the result
@@ -59,7 +58,6 @@ class Main {
     // show #containerPlayGame
     this.containerPlayGame.className = "";
   };
-
   CheckWinner = () => {
     for (const iterator of this.data) {
       var { num, streakClass } = iterator;
@@ -74,35 +72,33 @@ class Main {
       }
     }
   };
-
   // change between x and o
   handleChange = (event) => {
     var eventElements = event.target;
-    // Define each item via Class name
-    let selectElement = document.querySelector(`.${eventElements.className}`);
     // Get the number of each item ( data-index="1" )
-    let index_Element = selectElement.dataset.index;
-
+    let index_Element = eventElements.dataset.index;
+    // toggle between x and o
     if (this.changeIcons === this.x_icon) {
-      selectElement.innerHTML = this.x_icon;
+      eventElements.innerHTML = this.x_icon;
       this.numberArray[index_Element - 1] = "x";
       this.changeIcons = this.o_icon;
       this.audio.play();
     } else {
-      selectElement.innerHTML = this.o_icon;
+      eventElements.innerHTML = this.o_icon;
       this.numberArray[index_Element - 1] = "o";
       this.changeIcons = this.x_icon;
       this.audio.play();
     }
+    
     // Check winner
     this.CheckWinner();
-
-    if (event.target.innerHTML == this.x_icon) {
-      document.querySelector(".h2").innerText = " : الدور عند";
-      document.querySelector(".span").innerText = "o";
+    // Print which player will be playing
+    if (eventElements.innerHTML == this.x_icon) {
+      this.printWord.innerText = " : الدور عند";
+      this.printPlayer.innerText = "o";
     } else {
-      document.querySelector(".h2").innerText = " : الدور عند";
-      document.querySelector(".span").innerText = "x";
+      this.printWord.innerText= " : الدور عند";
+      this.printPlayer.innerText = "x";
     }
   };
   // restart the game function
@@ -132,16 +128,14 @@ class App extends Main {
     this.all_i_ele.forEach((ele) =>
       ele.addEventListener("click", (event) => {
         let eventElements = event.target,
-          getClassElements = eventElements.className,
-          selectElement = document.querySelector(`.${getClassElements}`),
           index_Element = eventElements.dataset.index;
         if (this.changeIcons === this.x_icon) {
-          selectElement.innerHTML = this.x_icon;
+          ele.innerHTML = this.x_icon;
           this.numberArray[index_Element - 1] = "x";
           this.changeIcons = this.o_icon;
           this.audio.play();
-          if (this.changeIcons == this.o_icon) {
-            if (this.numberArray[this.number] == null) {
+          if (this.changeIcons === this.o_icon) {
+            if (this.numberArray[this.number] === null) {
               this.numberArray[this.number] = "o";
               this.all_i_ele[this.number].innerHTML = this.o_icon;
               this.changeIcons = this.x_icon;
@@ -164,13 +158,13 @@ class App extends Main {
         }
           // Check winner
           this.CheckWinner();
-        if (this.streak.classList.length > 1) {
-          document.querySelector(".h2").innerText = ": الرابح هو";
-          document.querySelector(".span").innerText = this.winner;
-        } else {
-          document.querySelector(".h2").innerText = " : الدور عند";
-          document.querySelector(".span").innerText = "x";
-        }
+          if (this.streak.classList.length > 1) {
+            this.printWord.innerText= ": الرابح هو";
+            this.printPlayer.innerText= this.winner;
+          } else {
+            this.printWord.innerText = " : الدور عند";
+            this.printPlayer.innerText = "x";
+          }
       })
     );
   };
