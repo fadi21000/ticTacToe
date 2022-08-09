@@ -5,8 +5,8 @@ class Main {
     this.all_i_ele = document.querySelectorAll("span");
     this.x_icon = '<i class="fa-solid fa-xmark"></i>';
     this.o_icon = '<i class="fa-solid fa-o"></i>';
-    this.printWord=document.querySelector(".h2");
-    this.printPlayer=document.querySelector(".span");
+    this.printWord = document.querySelector(".h2");
+    this.printPlayer = document.querySelector(".span");
     // for change between x and o
     this.changeIcons = this.x_icon;
     // empty array to store the values x and o inside
@@ -65,10 +65,13 @@ class Main {
       var tile2 = this.numberArray[num[1]];
       var tile3 = this.numberArray[num[2]];
       if (tile1 != null && tile1 === tile2 && tile1 === tile3) {
-        this.all_i_ele.forEach((allElements) => (allElements.style.pointerEvents = "none"));
+        this.all_i_ele.forEach(
+          (allElements) => (allElements.style.pointerEvents = "none")
+        );
         this.winner = tile1;
-        this.streak.classList.add(streakClass);
         this.winnerAudio.play();
+        this.streak.classList.add(streakClass);
+        break;
       }
     }
   };
@@ -89,15 +92,15 @@ class Main {
       this.changeIcons = this.x_icon;
       this.audio.play();
     }
-    
     // Check winner
     this.CheckWinner();
+
     // Print which player will be playing
     if (eventElements.innerHTML == this.x_icon) {
       this.printWord.innerText = " : الدور عند";
       this.printPlayer.innerText = "o";
     } else {
-      this.printWord.innerText= " : الدور عند";
+      this.printWord.innerText = " : الدور عند";
       this.printPlayer.innerText = "x";
     }
   };
@@ -156,15 +159,15 @@ class App extends Main {
           this.changeIcons = this.x_icon;
           this.audio.play();
         }
-          // Check winner
-          this.CheckWinner();
-          if (this.streak.classList.length > 1) {
-            this.printWord.innerText= ": الرابح هو";
-            this.printPlayer.innerText= this.winner;
-          } else {
-            this.printWord.innerText = " : الدور عند";
-            this.printPlayer.innerText = "x";
-          }
+        // Check winner
+        this.CheckWinner();
+        if (this.streak.classList.length > 1) {
+          this.printWord.innerText = ": الرابح هو";
+          this.printPlayer.innerText = this.winner;
+        } else {
+          this.printWord.innerText = " : الدور عند";
+          this.printPlayer.innerText = "x";
+        }
       })
     );
   };
