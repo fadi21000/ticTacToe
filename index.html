@@ -19,22 +19,23 @@
   </head>
 
   <body>
+    <h2 style="text-align: center;">TicTacToe</h2>
     <div class="container">
-      <span data-index="1" class="border-right-bottom"></span>
-      <span data-index="2" class="border-right-bottom"></span>
-      <span data-index="3" class="border-bottom"></span>
-      <span data-index="4" class="border-right-bottom"></span>
-      <span data-index="5" class="border-right-bottom"></span>
-      <span data-index="6" class="border-bottom"></span>
-      <span data-index="7" class="border-right"></span>
-      <span data-index="8" class="border-right"></span>
+      <span data-index="1" class="mouse border-right-bottom"></span>
+      <span data-index="2" class="mouse border-right-bottom"></span>
+      <span data-index="3" class="mouse border-bottom"></span>
+      <span data-index="4" class="mouse border-right-bottom"></span>
+      <span data-index="5" class="mouse border-right-bottom"></span>
+      <span data-index="6" class="mouse border-bottom"></span>
+      <span data-index="7" class="mouse border-right"></span>
+      <span data-index="8" class="mouse border-right"></span>
       <span data-index="9"></span>
       <hr class="streak" />
     </div>
 
     <div class="container-play">
       <div class="play-with-div">
-        <p class="message">الرجاء الاختيار مع من تريد أن تبدأ اللعبة</p>
+        <p class="message">Please choose with whom you want to start the game</p>
         <button class="play-with-buttons" id="pc-button">
           <i class="fa-solid fa-desktop"></i>
         </button>
@@ -43,8 +44,8 @@
         </button>
       </div>
       <div id="containerPlayGame" class="d-none">
-        <a class="span"> </a><a class="h2"></a
-        ><button class="button-play" id="play">تشغيل اللعبة</button>
+        <a class="h2"></a
+        ><a class="span"> </a><button class="button-play" id="play">Restart Game</button>
       </div>
     </div>
     <script src="https://randojs.com/2.0.0.js"></script>
